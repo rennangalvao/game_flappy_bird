@@ -50,8 +50,13 @@ public class FlappyBird extends ApplicationAdapter {
 		velocidadeQueda ++;
 
 		//queda passaro
-		if(posicaoInicialVertical > 0)
+		if(posicaoInicialVertical > 0 || velocidadeQueda < 0)
 			posicaoInicialVertical = posicaoInicialVertical - velocidadeQueda;
+
+		// Movimento *verifica se a tela foi tocada*
+		if ( Gdx.input.justTouched() ){
+			velocidadeQueda = -10;
+		}
 
 		//Abertura looop
 		batch.begin();
